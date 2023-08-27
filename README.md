@@ -1,5 +1,5 @@
-# Laravel 10 portfolio
+# Laravel 10 self-study
 
-## This is my first time using git and github
+## About this repository
 
-Hello
+I knew git and github for a few months now but this is my first time using it. I am new to Laravel but I know some concepts like MVC, routing, and others.
