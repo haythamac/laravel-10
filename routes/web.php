@@ -17,16 +17,27 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     // fetch all users
-    $users = DB::select("SELECT * FROM users");
+    $users = DB::select("SELECT * FROM users"); // raw sql query
+    // $users = DB::table("users")->where('id', 5)->get(); // laravel query builder
+    // $users = DB::table("users")->find(7); // get the id which is 7
+    // $users = DB::table("users")->pluck('email'); // get the column which is email
 
     // create new user
     // $user = DB::insert("INSERT INTO users (name, email, password) values (?,?,?)", ["Dayle", "dayle5@gmail.com", "123123123"]);
+    // $user = DB::insert("INSERT INTO users (name, email, password) values (?,?,?)", ["Dayle", "dayle5@gmail.com", "123123123"]);
+    // $user = DB::table("users")->insert([
+    //     'name' => 'Janssen',
+    //     'email' => 'janssen.uy2@gmail.com',
+    //     'password' => '123123123'
+    // ]);
 
     // update user
     // $user = DB::update("UPDATE users set name=? WHERE name=?", ["Janssen", "Janssen Earl"]);
+    // $user = DB::table("users")->where('id', 5)->update(['name' => 'Earl', 'email' => 'earl@gmail.com']); // laravel query builder
 
     // delete user
     // $user = DB::delete("DELETE FROM users WHERE id=?", [4]);
+    // $user = DB::table("users")->where('id', 5)->delete();
     dd($users);
 });
 
