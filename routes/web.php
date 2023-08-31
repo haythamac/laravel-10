@@ -38,12 +38,12 @@ Route::get('/', function () {
     // $user = DB::table("users")->where('id', 5)->delete(); // Delete
 
     // Eloquent Model ==============================================================================================================
-    $users = User::get(); 
-    // $user = User::create([ 
-    //     'name' => 'Janssen',
-    //     'email' => 'janssen.uy4@gmail.com',
-    //     'password' => '123123123'
-    // ]);
+    $users = User::get()->where('id', 7)->first(); 
+    $user = User::create([ 
+        'name' => 'janssen earl uy',
+        'email' => 'janssen.uy8@gmail.com',
+        'password' => '123123123'
+    ]);
 
     // $user = User::find(7);
     // $user->update([
