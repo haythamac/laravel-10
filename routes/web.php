@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -16,29 +17,44 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-    // fetch all users
-    $users = DB::select("SELECT * FROM users"); // raw sql query
-    // $users = DB::table("users")->where('id', 5)->get(); // laravel query builder
+    // Raw SQL query ===============================================================================================================
+    // $users = DB::select("SELECT * FROM users"); // get all users
+    // $user = DB::insert("INSERT INTO users (name, email, password) values (?,?,?)", ["Dayle", "dayle5@gmail.com", "123123123"]); // insert
+    // $user = DB::update("UPDATE users set name=? WHERE name=?", ["Janssen", "Janssen Earl"]); // update
+    // $user = DB::delete("DELETE FROM users WHERE id=?", [4]); // delete
+    
+    // Laravel Query Builder =======================================================================================================
+    // $users = DB::table("users")->where('id', 5)->get(); // Get
     // $users = DB::table("users")->find(7); // get the id which is 7
     // $users = DB::table("users")->pluck('email'); // get the column which is email
 
-    // create new user
-    // $user = DB::insert("INSERT INTO users (name, email, password) values (?,?,?)", ["Dayle", "dayle5@gmail.com", "123123123"]);
-    // $user = DB::insert("INSERT INTO users (name, email, password) values (?,?,?)", ["Dayle", "dayle5@gmail.com", "123123123"]);
-    // $user = DB::table("users")->insert([
+    // $user = DB::table("users")->insert([ // insert
     //     'name' => 'Janssen',
     //     'email' => 'janssen.uy2@gmail.com',
     //     'password' => '123123123'
     // ]);
 
-    // update user
-    // $user = DB::update("UPDATE users set name=? WHERE name=?", ["Janssen", "Janssen Earl"]);
-    // $user = DB::table("users")->where('id', 5)->update(['name' => 'Earl', 'email' => 'earl@gmail.com']); // laravel query builder
+    // $user = DB::table("users")->where('id', 5)->update(['name' => 'Earl', 'email' => 'earl@gmail.com']); // update
+    // $user = DB::table("users")->where('id', 5)->delete(); // Delete
 
-    // delete user
-    // $user = DB::delete("DELETE FROM users WHERE id=?", [4]);
-    // $user = DB::table("users")->where('id', 5)->delete();
-    dd($users);
+    // Eloquent Model ==============================================================================================================
+    $users = User::get(); 
+    // $user = User::create([ 
+    //     'name' => 'Janssen',
+    //     'email' => 'janssen.uy4@gmail.com',
+    //     'password' => '123123123'
+    // ]);
+
+    // $user = User::find(7);
+    // $user->update([
+    //     'name' => 'Janssen Earl Uy',
+    //     'email' => 'janssen.earl@gmail.com',
+    // ]);
+
+    // $user = User::find(7);
+    // $user->delete();
+
+    dd($user);
 });
 
 Route::get('/dashboard', function () {
