@@ -16,7 +16,11 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function (){
+    return view('welcome');
+});
+
+Route::get('/help', function () {
     // Raw SQL query ===============================================================================================================
     // $users = DB::select("SELECT * FROM users"); // get all users
     // $user = DB::insert("INSERT INTO users (name, email, password) values (?,?,?)", ["Dayle", "dayle5@gmail.com", "123123123"]); // insert
@@ -39,11 +43,11 @@ Route::get('/', function () {
 
     // Eloquent Model ==============================================================================================================
     $users = User::get()->where('id', 7)->first(); 
-    $user = User::create([ 
-        'name' => 'janssen earl uy',
-        'email' => 'janssen.uy8@gmail.com',
-        'password' => '123123123'
-    ]);
+    // $user = User::create([ 
+    //     'name' => 'janssen earl uy',
+    //     'email' => 'janssen.uy8@gmail.com',
+    //     'password' => '123123123'
+    // ]);
 
     // $user = User::find(7);
     // $user->update([
@@ -54,7 +58,7 @@ Route::get('/', function () {
     // $user = User::find(7);
     // $user->delete();
 
-    dd($user);
+    dd($users);
 });
 
 Route::get('/dashboard', function () {
