@@ -50,8 +50,8 @@ class User extends Authenticatable
     protected function name(): Attribute 
     {
         return Attribute::make(
-            set: fn ($value) => ucwords($value),
-            get: fn ($value) => strtoupper($value) // You can use Str::upper($value);, it is the same thing. Remember to import it from use Illuminate\Support\Str
+            set: fn ($value) => ucwords($value)
+            // get: fn ($value) => strtoupper($value) // You can use Str::upper($value);, it is the same thing. Remember to import it from use Illuminate\Support\Str
         );
     }
 
