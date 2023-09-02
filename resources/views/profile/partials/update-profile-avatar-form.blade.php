@@ -10,16 +10,16 @@
     </header>
 
     @if (session('message'))
-        <div class="text-red-600">
+        <div class="text-green-600">
             {{ session('message') }}
         </div>
     @endif
 
-    <form  method="post" action=" {{ route('profile.avatar') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
+    <form  method="post" action=" {{ route('profile.avatar') }}" class="mt-2 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
-        <div>
+        <div class="mt-2">
             <x-input-label for="avatar" value="Avatar" />
             <x-text-input id="avatar" name="avatar" type="file" class="mt-1 block w-full" :value="old('avatar', $user->avatar)"  autofocus autocomplete="avatar" />
             <x-input-error class="mt-2" :messages="$errors->get('avatar')" />
