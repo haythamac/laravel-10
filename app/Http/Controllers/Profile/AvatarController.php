@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateAvatarRequest;
 use Illuminate\Http\Request;
 
 class AvatarController extends Controller
 {
-    public function update()
+    public function response_sample()
     {
 
         // return redirect(route('profile.edit'));
@@ -26,5 +27,11 @@ class AvatarController extends Controller
         //         {{ session('message') }}
         //     </div>
         // @endif
+    }
+
+    public function update(UpdateAvatarRequest $request) 
+    {
+        dd($request->all());
+        return redirect(route('profile.edit'));
     }
 }
